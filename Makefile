@@ -1,13 +1,14 @@
 CC=gcc
+CFLAGS=-g
 
 all: main help
-	$(CC) help.o main.o -o learn-it
+	$(CC) $(CFLAGS) help.o main.o -o learn-it
 
 main: help common.h
-	$(CC) -c main.c
+	$(CC) $(CFLAGS) -c main.c
 
 help: help.c common.h
-	$(CC) -c help.c
+	$(CC) $(CFLAGS) -c help.c
 
 clean:
 	rm -f *.o
