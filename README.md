@@ -8,3 +8,13 @@ the word afterwards and thus it doesn't lead to increase in our
 vocabulary. This software is intended to keep track of all those words
 and then when you are free it can randomly show you some word just to make
 sure you know its meaning.
+
+## Installation
+
+To first compile the code, type 
+`$ make`
+
+To install the software, type 
+`$ sudo make install`
+
+Now you can easily run the program by just typing `learn-it`.
