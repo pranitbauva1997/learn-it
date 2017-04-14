@@ -30,3 +30,10 @@ int add(const char *word) {
     }
     return 0;
 }
+
+int clear() {
+    char *home;
+    home = getenv("HOME");
+    chdir(home);
+    return unlink(".words");
+}

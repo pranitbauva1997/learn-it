@@ -12,6 +12,7 @@ int print_help() {
         "    list          - List all words from the library\n"
         "    get           - Get a random word from the library\n"
         "    remove <word> - Remove a word from the library\n"
+        "    clear         - Clear the whole library\n"
         "\nOptions:\n"
         "    -h|--help       This is help text\n";
     printf("%s", help_str);
