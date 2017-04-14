@@ -27,8 +27,10 @@ int add(const char *word) {
     }
     if (fprintf(fp, "%s\n", word) < 0) {
         fprintf(stderr, "error: couldn't append to the file `~/.words`\n");
+        fclose(fp);
         return -1;
     }
+    fclose(fp);
     return 0;
 }
 
