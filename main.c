@@ -16,7 +16,9 @@ int main(int argc, const char **argv) {
             return add(argv[++i]);
         } else if (!strcmp(argv[i], "clear")) {
             return clear();
-        } else {
+        } else if (!strcmp(argv[i], "list")) {
+            return list();
+        }else {
             fprintf(stderr, "error: sorry couldn't identify what you are\n"
                             "       saying. Please try `learn-it help`\n");
             return -1;

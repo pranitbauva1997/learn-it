@@ -10,8 +10,8 @@ main: help common.h
 help: help.c common.h
 	$(CC) $(CFLAGS) -c help.c
 
-words: words.c common.h
-	$(CC) $(CFLAGS) -c words.c
+words: words.cpp common.h
+	$(CC) $(CFLAGS) -c words.cpp
 
 clean:
 	rm -f *.o

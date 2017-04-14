@@ -37,3 +37,22 @@ int clear() {
     chdir(home);
     return unlink(".words");
 }
+
+int list() {
+    char *home;
+    std::string line;
+    home = getenv("HOME");
+    chdir(home);
+    std::fstream fp (".words");
+    if (fp.is_open()) {
+        while (getline(fp, line))
+            std::cout << line << std::endl;
+        fp.close();
+    }
+    else {
+        fprintf(stderr, "error: couldn't open the file ~/.words for reading\n");
+        return -1;
+    }
+
+    return 0;
+}
