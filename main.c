@@ -18,7 +18,9 @@ int main(int argc, const char **argv) {
             return clear();
         } else if (!strcmp(argv[i], "list")) {
             return list();
-        }else {
+        } else if (!strcmp(argv[i], "get")) {
+            return get();
+        } else {
             fprintf(stderr, "error: sorry couldn't identify what you are\n"
                             "       saying. Please try `learn-it help`\n");
             return -1;

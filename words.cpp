@@ -71,3 +71,16 @@ int list() {
 
     return 0;
 }
+
+static int get_random_index(int max) {
+    srand(time(NULL));
+    return rand() % max;
+}
+
+int get() {
+    std::vector<std::string> words;
+    if (read_words(words))
+        return -1;
+
+    std::cout << words[get_random_index(words.size())] << std::endl;
+}

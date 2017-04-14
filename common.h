@@ -11,3 +11,4 @@ int init();
 int add(const char *);
 int clear();
 int list();
+int get();
