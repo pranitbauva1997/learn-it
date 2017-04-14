@@ -7,6 +7,7 @@ void help() {
         "to learn so that you can make use of them in your daily life.\n"
         "\nCommands: \n"
         "    init          - Initialize a new library of words\n"
+        "    help          - Print help ie. this screen\n"
         "    add <word>    - Add new word to your library\n"
         "    list          - List all words from the library\n"
         "    get           - Get a random word from the library\n"
