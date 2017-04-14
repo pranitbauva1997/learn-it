@@ -20,6 +20,8 @@ int main(int argc, const char **argv) {
             return list();
         } else if (!strcmp(argv[i], "get")) {
             return get();
+        } else if (!strcmp(argv[i], "remove") && i + 1 < argc) {
+            return remove(argv[++i]);
         } else {
             fprintf(stderr, "error: sorry couldn't identify what you are\n"
                             "       saying. Please try `learn-it help`\n");

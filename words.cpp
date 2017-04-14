@@ -84,3 +84,29 @@ int get() {
 
     std::cout << words[get_random_index(words.size())] << std::endl;
 }
+
+static int remove_word(std::vector<std::string> &words, std::string word) {
+    for (int i = 0; i < word.size(); i++) {
+        std::string current = words[i];
+        if (!word.compare(current))
+            words.erase(words.begin() + i--);
+    }
+}
+
+static int write_words(std::vector<std::string> &words) {
+    goto_home_dir();
+    std::ofstream fp(".words");
+    for (int i = 0; i < words.size(); i++)
+        fp << words[i] << std::endl;
+
+    fp.close();
+}
+
+int remove(const char *w) {
+    std::string word(w);
+    std::vector<std::string> words;
+    read_words(words);
+    remove_word(words, word);
+    write_words(words);
+    return 0;
+}

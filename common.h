@@ -12,3 +12,4 @@ int add(const char *);
 int clear();
 int list();
 int get();
+int remove(const char *word);
