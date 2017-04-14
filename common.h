@@ -1,3 +1,4 @@
 #include <stdio.h>
+#include <string.h>
 
-void help();
+int print_help();

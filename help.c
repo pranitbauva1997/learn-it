@@ -1,6 +1,6 @@
 #include "common.h"
 
-void help() {
+int print_help() {
     const char *help_str =
         "Usage: learn-it <command> [word]\n"
         "\nlearn-it is a simple command to store the words which you want\n"
