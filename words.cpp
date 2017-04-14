@@ -1,10 +1,13 @@
 #include "common.h"
 
+static void goto_home_dir() {
+    char *home = getenv("HOME");
+    chdir(home);
+}
+
 int init() {
     FILE *fp;
-    char *home;
-    home = getenv("HOME");
-    chdir(home);
+    goto_home_dir();
     fp = fopen(".words", "w");
     if (fp == NULL) {
         fprintf(stderr, "error: couldn't create the file `~/.words`\n");
@@ -14,9 +17,7 @@ int init() {
 
 int add(const char *word) {
     FILE *fp;
-    char *home;
-    home = getenv("HOME");
-    chdir(home);
+    goto_home_dir();
     fp = fopen(".words", "a");
     if (fp == NULL) {
         fprintf(stderr, "error: couldn't append to the file `~/.words`\n"
@@ -32,9 +33,7 @@ int add(const char *word) {
 }
 
 int clear() {
-    char *home;
-    home = getenv("HOME");
-    chdir(home);
+    goto_home_dir();
     return unlink(".words");
 }
 
@@ -45,8 +44,7 @@ static void print_words(std::vector<std::string> words) {
 
 static int read_words(std::vector<std::string> &words) {
     std::string word;
-    char *home = getenv("HOME");
-    chdir(home);
+    goto_home_dir();
     std::fstream fp(".words");
     if (fp.is_open()) {
         while (getline(fp, word))
