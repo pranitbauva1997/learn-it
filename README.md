@@ -11,10 +11,17 @@ sure you know its meaning.
 
 ## Installation
 
-To first compile the code, type 
-`$ make`
+To first compile the code, type
+```
+$ make
+```
 
 To install the software, type 
-`$ sudo make install`
+```
+$ sudo make install
+```
 
-Now you can easily run the program by just typing `learn-it`.
+Now you can easily run the program by just typing
+```
+learn-it
+```
