@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 int print_help();
 int init();

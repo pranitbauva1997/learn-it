@@ -38,21 +38,36 @@ int clear() {
     return unlink(".words");
 }
 
-int list() {
-    char *home;
-    std::string line;
-    home = getenv("HOME");
+static void print_words(std::vector<std::string> words) {
+    for (int i = 0; i < words.size(); i++)
+        std::cout << words[i] << std::endl;
+}
+
+static int read_words(std::vector<std::string> &words) {
+    std::string word;
+    char *home = getenv("HOME");
     chdir(home);
-    std::fstream fp (".words");
+    std::fstream fp(".words");
     if (fp.is_open()) {
-        while (getline(fp, line))
-            std::cout << line << std::endl;
+        while (getline(fp, word))
+            words.push_back(word);
         fp.close();
-    }
-    else {
-        fprintf(stderr, "error: couldn't open the file ~/.words for reading\n");
+    } else {
+        fprintf(stderr, "error: couldn't open the file ~/.words for reading\n"
+                        "Maybe you need to first create it with"
+                        "`learn-it init`\n");
         return -1;
     }
+
+    return 0;
+}
+
+int list() {
+    std::vector<std::string> words;
+    if (read_words(words))
+        return -1;
+
+    print_words(words);
 
     return 0;
 }
