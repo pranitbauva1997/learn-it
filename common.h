@@ -5,3 +5,4 @@
 
 int print_help();
 int init();
+int add(const char *);

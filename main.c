@@ -12,6 +12,8 @@ int main(int argc, const char **argv) {
             return print_help();
         } else if (!strcmp(argv[i], "init")) {
             return init();
+        } else if (!strcmp(argv[i], "add")) {
+            return add(argv[++i]);
         } else {
             fprintf(stderr, "error: sorry couldn't identify what you are\n"
                             "       saying. Please try `learn-it help`\n");
