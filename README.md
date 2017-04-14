@@ -1,4 +1,4 @@
-### Introduction
+## Introduction
 
 This software helps you to keep the track of words you have read which
 you want to digest better. Whenever we read a book, there might be a few
