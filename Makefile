@@ -13,6 +13,9 @@ help: help.c common.h
 words: words.cpp common.h
 	$(CC) $(CFLAGS) -c words.cpp
 
+install: all
+	cp learn-it /usr/bin
+
 clean:
 	rm -f *.o
 	rm -f learn-it
