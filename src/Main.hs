@@ -1,5 +1,8 @@
 module Main where
 
+import System.Environment
+import System.IO
+
 usageText =
   "Usage: learn-it <command> [word]\n\
   \ learn-it is a simple command to store the words which you want\n\
@@ -16,4 +19,16 @@ usageText =
   \     -h|--help     This is help text\n"
 
 main :: IO ()
-main = putStrLn usage_text
+main = do
+  args <- getArgs
+  handleArgs args
+
+handleArgs :: [String] -> IO ()
+handleArgs [] = putStrLn usageText
+handleArgs (x:xs) =
+  case x of "init" -> initDict
+
+initDict :: IO ()
+initDict = do
+  handle <- openFile ".words" WriteMode
+  hClose handle
