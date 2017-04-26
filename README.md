@@ -11,17 +11,29 @@ sure you know its meaning.
 
 ## Installation
 
-To first compile the code, type
+We would prefer to use `cabal new-build` but one can also use `cabal build`.
+
+**Note:** `cabal new-build` is only available for cabal >= 1.24
+
+To get the latest version of cabal:
+
 ```
-$ make
+cabal update
+cabal install cabal-install
 ```
 
-To install the software, type 
+To build using `cabal new-build` just type:
+
 ```
-$ sudo make install
+$ cabal new-build
 ```
 
-Now you can easily run the program by just typing
+You will get the binaries for testing in your `dist-newstyle/` folder.
+
+To build using `cabal build` just type:
+
 ```
-learn-it
+$ cabal build
 ```
+
+You will get the binaries for testing in your `dist/` folder.
