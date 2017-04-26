@@ -3,6 +3,7 @@ module Main where
 import System.Environment
 import System.IO
 import System.Directory
+import System.Random
 import Control.Monad
 
 usageText =
@@ -33,6 +34,7 @@ handleArgs (x:xs) =
             "list" -> listDict
             "add" -> addToDict $ head xs
             "remove" -> removeFromDict $ head xs
+            "get" -> getWord
             "help" -> putStrLn usageText
             "-h" -> putStrLn usageText
             "--help" -> putStrLn usageText
@@ -65,3 +67,15 @@ removeFromDict word = do
 
   -- Ugly hack to avoid Lazy evaluation
   length contents `seq` writeFile ".words" $ unlines [x | x <- lines contents, x /= word]
+
+getWord :: IO ()
+getWord = do
+  contents <- readFile ".words"
+  gen <- getStdGen
+  putStrLn $ getRandomWord gen $ lines contents
+
+getRandomWord :: StdGen -> [String] -> String
+getRandomWord gen  words =
+  let num = length words
+      (randNo, newGen) = randomR (0, num - 1) gen :: (Int, StdGen)
+  in words !! randNo
