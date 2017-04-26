@@ -32,6 +32,7 @@ handleArgs (x:xs) =
             "clear" -> clearDict
             "list" -> listDict
             "add" -> addToDict $ head xs
+            "remove" -> removeFromDict $ head xs
             "help" -> putStrLn usageText
             "-h" -> putStrLn usageText
             "--help" -> putStrLn usageText
@@ -57,3 +58,10 @@ listDict = do
 
 addToDict :: String -> IO ()
 addToDict word = appendFile ".words" (word ++ "\n")
+
+removeFromDict :: String -> IO ()
+removeFromDict word = do
+  contents <- readFile ".words"
+
+  -- Ugly hack to avoid Lazy evaluation
+  length contents `seq` writeFile ".words" $ unlines [x | x <- lines contents, x /= word]
