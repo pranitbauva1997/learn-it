@@ -1,2 +1,4 @@
-*.o
-learn-it
+dist-newstyle/
+dist/
+
+.words
