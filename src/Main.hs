@@ -21,6 +21,8 @@ usageText =
   \ Options:\n\
   \     -h|--help     This is help text\n"
 
+dictFile = ".words"
+
 main :: IO ()
 main = do
   args <- getArgs
@@ -42,35 +44,35 @@ handleArgs (x:xs) =
 
 initDict :: IO ()
 initDict = do
-  handle <- openFile ".words" WriteMode
+  handle <- openFile dictFile WriteMode
   hClose handle
 
 clearDict :: IO ()
-clearDict = removeIfExists ".words"
+clearDict = removeIfExists dictFile
 
 removeIfExists :: FilePath -> IO ()
 removeIfExists fileName = do
-  exists <- doesFileExist ".words"
-  when exists $ removeFile ".words"
+  exists <- doesFileExist dictFile
+  when exists $ removeFile dictFile
 
 listDict :: IO ()
 listDict = do
-  contents <- readFile ".words"
+  contents <- readFile dictFile
   putStrLn contents
 
 addToDict :: String -> IO ()
-addToDict word = appendFile ".words" (word ++ "\n")
+addToDict word = appendFile dictFile (word ++ "\n")
 
 removeFromDict :: String -> IO ()
 removeFromDict word = do
-  contents <- readFile ".words"
+  contents <- readFile dictFile
 
   -- Ugly hack to avoid Lazy evaluation
-  length contents `seq` writeFile ".words" $ unlines [x | x <- lines contents, x /= word]
+  length contents `seq` writeFile dictFile $ unlines [x | x <- lines contents, x /= word]
 
 getWord :: IO ()
 getWord = do
-  contents <- readFile ".words"
+  contents <- readFile dictFile
   gen <- getStdGen
   putStrLn $ getRandomWord gen $ lines contents
 
