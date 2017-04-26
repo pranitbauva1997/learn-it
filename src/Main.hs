@@ -27,6 +27,9 @@ handleArgs :: [String] -> IO ()
 handleArgs [] = putStrLn usageText
 handleArgs (x:xs) =
   case x of "init" -> initDict
+            "help" -> putStrLn usageText
+            "-h" -> putStrLn usageText
+            "--help" -> putStrLn usageText
 
 initDict :: IO ()
 initDict = do
