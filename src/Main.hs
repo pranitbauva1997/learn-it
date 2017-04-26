@@ -31,6 +31,7 @@ handleArgs (x:xs) =
   case x of "init" -> initDict
             "clear" -> clearDict
             "list" -> listDict
+            "add" -> addToDict $ head xs
             "help" -> putStrLn usageText
             "-h" -> putStrLn usageText
             "--help" -> putStrLn usageText
@@ -53,3 +54,6 @@ listDict :: IO ()
 listDict = do
   contents <- readFile ".words"
   putStrLn contents
+
+addToDict :: String -> IO ()
+addToDict word = appendFile ".words" (word ++ "\n")
