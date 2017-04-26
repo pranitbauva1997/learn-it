@@ -33,6 +33,7 @@ handleArgs (x:xs) =
             "help" -> putStrLn usageText
             "-h" -> putStrLn usageText
             "--help" -> putStrLn usageText
+            _ -> putStrLn usageText
 
 initDict :: IO ()
 initDict = do
