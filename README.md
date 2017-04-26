@@ -11,17 +11,20 @@ sure you know its meaning.
 
 ## Installation
 
-To first compile the code, type
+We would prefer to use `cabal new-build` but one can also use `cabal build`
+
+To build using `cabal new-build` just type:
+
 ```
-$ make
+$ cabal new-build
 ```
 
-To install the software, type 
+You will get the binaries for testing in your `dist-newstyle/` folder.
+
+To build using `cabal build` just type:
+
 ```
-$ sudo make install
+$ cabal build
 ```
 
-Now you can easily run the program by just typing
-```
-learn-it
-```
+You will get the binaries for testing in your `dist/` folder.
