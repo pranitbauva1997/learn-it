@@ -2,6 +2,8 @@ module Main where
 
 import System.Environment
 import System.IO
+import System.Directory
+import Control.Monad
 
 usageText =
   "Usage: learn-it <command> [word]\n\
@@ -27,6 +29,7 @@ handleArgs :: [String] -> IO ()
 handleArgs [] = putStrLn usageText
 handleArgs (x:xs) =
   case x of "init" -> initDict
+            "clear" -> clearDict
             "help" -> putStrLn usageText
             "-h" -> putStrLn usageText
             "--help" -> putStrLn usageText
@@ -35,3 +38,11 @@ initDict :: IO ()
 initDict = do
   handle <- openFile ".words" WriteMode
   hClose handle
+
+clearDict :: IO ()
+clearDict = removeIfExists ".words"
+
+removeIfExists :: FilePath -> IO ()
+removeIfExists fileName = do
+  exists <- doesFileExist ".words"
+  when exists $ removeFile ".words"
