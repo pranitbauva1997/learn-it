@@ -30,6 +30,7 @@ handleArgs [] = putStrLn usageText
 handleArgs (x:xs) =
   case x of "init" -> initDict
             "clear" -> clearDict
+            "list" -> listDict
             "help" -> putStrLn usageText
             "-h" -> putStrLn usageText
             "--help" -> putStrLn usageText
@@ -47,3 +48,8 @@ removeIfExists :: FilePath -> IO ()
 removeIfExists fileName = do
   exists <- doesFileExist ".words"
   when exists $ removeFile ".words"
+
+listDict :: IO ()
+listDict = do
+  contents <- readFile ".words"
+  putStrLn contents
